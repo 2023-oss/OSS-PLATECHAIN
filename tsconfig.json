@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "commonjs",
+    "outDir": "dist",
+    "rootDir": "./",
+    "typeRoots": ["./@type/"]
+  },
+  "include": [
+    "src/**/*",
+    "console/server/**/*", 
+    "@types"
+  ],
+  "exclude": [
+    "console/frontend/**/*",
+    "node_modules"
+  ]
+ }
