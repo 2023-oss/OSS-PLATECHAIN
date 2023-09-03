@@ -3,7 +3,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 const api = axios.create({
-    baseURL: `/v1`,
+    baseURL: `http://block.platechain.shop/v1/`,
 });
 
 export const getBlocks = () => api.get(`/block`)

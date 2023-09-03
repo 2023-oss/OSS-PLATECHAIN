@@ -17,25 +17,25 @@ import useAuth from '../../hooks/user/useAuth';
 import {Link} from 'react-router-dom';
 
 const MainBlock = styled.div`
-    background-color: #F0F4FE;
+    background-color: #fff;
     height: 100vh;
     header{
         padding: 2rem;
-        background-color: #F0F4FE;
+        background-color: #fff;
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         img{
-            width: 40rem;
+            width: 15rem;
         }
     }
     .card-group{
-        background-color: #F0F4FE;
+        background-color: #fff;
         display: flex;
         flex-direction: row;
-        margin-top: 1.5rem;
+        
         padding: 2rem;
-        margin-bottom: 1.5rem;
+    
         .card{
             margin-right: 1.5rem;
             padding: 2.5rem;
@@ -54,19 +54,16 @@ const MainBlock = styled.div`
     }
     .list{
         padding: 2rem;
-        background-color: #F0F4FE;
+        background-color: #fff;
     }
     footer{
-        background-color: #F0F4FE;
+        background-color: #fff;
         display: flex;
         justify-content: center;
     }
     
 `;
 const Main = () => {
-
-
-
     const {blocks} = useBlock();
     const {handleLogout} = useAuth();
 
@@ -93,9 +90,6 @@ const Main = () => {
         <MainBlock>
             <div>
                 <header>
-                    <div>
-
-                    </div>
                     <img src='/logo.png'/>
                     <div className='btn-group'>
                         <Link to='/wallet'>
@@ -113,17 +107,18 @@ const Main = () => {
                         5 <span>Node</span>
                     </div>
                     <div className='card'>
-                        2 <span>Blocks</span>
+                        {blocks.length ?? 0} <span>Blocks</span>
                     </div>
                     <div className='card'>
-                        1 <span>Orgs</span>
+                        0.07 <span>TPS</span>
                     </div>
                     <div className='card'>
-                        3 <span>Cluster</span>
+                        $ 0.08 <span>PTC Price</span>
                     </div>
                 </div>
                 <div className='list'>
                     <Input fluid size="big" icon='search' placeholder='Search...' />
+                    <h3>Blocks</h3>
                     <Table celled  selectable>
                         <Table.Header>
                         <Table.Row>
