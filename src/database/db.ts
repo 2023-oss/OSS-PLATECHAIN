@@ -1,5 +1,5 @@
 import {getDefaultInstance, Ottoman, start} from 'ottoman';
-import ledger from './ledger';
+import ledger from './ledger.js';
 
 let ottoman = getDefaultInstance();
 

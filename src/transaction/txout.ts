@@ -1,5 +1,5 @@
-import { Wallet } from "../wallet";
-import { TxIn } from "./txin";
+import { Wallet } from "../wallet.js";
+import { TxIn } from "./txin.js";
 
 export class TxOut{
     public account: string;

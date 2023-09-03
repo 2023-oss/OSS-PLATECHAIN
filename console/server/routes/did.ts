@@ -1,9 +1,9 @@
 import { Router } from "express";
-import {Wallet} from '../../../src/wallet';
-import { ReceivedTx } from "../../../src/wallet";
-import {Wallet as W} from '../../../wallet/wallet';
-import { Transaction } from "../../../src/transaction/transaction";
-import { Block } from "../../../src/blockchain/block";
+import {Wallet} from '../../../src/wallet.js';
+import { ReceivedTx } from "../../../src/wallet.js";
+import {Wallet as W} from '../../../wallet/wallet.js';
+import { Transaction } from "../../../src/transaction/transaction.js";
+import { Block } from "../../../src/blockchain/block.js";
 
 const router: Router = Router();
 

@@ -1,7 +1,7 @@
-import { SHA256 } from 'crypto-js';
+import SHA256 from 'crypto-js/sha256.js';
 import merkle from 'merkle';
-import { BlockHeader } from './blockHeader';
-import { BLOCK_GENERATION_INTERVAL, BLOCK_GENERATION_TIME_UNIT, DIFFICULTY_ADJUSTMENT_INTERVAL, GENESIS } from './genesis';
+import { BlockHeader } from './blockHeader.js';
+import { BLOCK_GENERATION_INTERVAL, BLOCK_GENERATION_TIME_UNIT, DIFFICULTY_ADJUSTMENT_INTERVAL, GENESIS } from './genesis.js';
 
 import hexToBinary from 'hex-to-binary';
 

@@ -1,8 +1,8 @@
 import { Router } from "express";
-import {Wallet} from '../../../src/wallet';
-import { ReceivedTx } from "../../../src/wallet";
-import {Wallet as W} from '../../../wallet/wallet';
-import { Transaction } from "../../../src/transaction/transaction";
+import {Wallet} from '../../../src/wallet.js';
+import { ReceivedTx } from "../../../src/wallet.js";
+import {Wallet as W} from '../../../wallet/wallet.js';
+import { Transaction } from "../../../src/transaction/transaction.js";
 
 const router: Router = Router();
 

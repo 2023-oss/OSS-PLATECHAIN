@@ -1,7 +1,7 @@
-import { SHA256 } from 'crypto-js';
+import SHA256 from 'crypto-js/sha256.js';
 import elliptic from "elliptic";
-import { UnspentTxOut } from './transaction/unspentTxOut';
-import { Transaction } from './transaction/transaction';
+import { UnspentTxOut } from './transaction/unspentTxOut.js';
+import { Transaction } from './transaction/transaction.js';
 
 const ec = new elliptic.ec("secp256k1");
 

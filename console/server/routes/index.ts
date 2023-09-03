@@ -1,7 +1,7 @@
 import express from "express";
 import fs from "fs";
 import path from "path";
-import { Wallet } from "../../../src/wallet";
+import { Wallet } from "../../../src/wallet.js";
 
 const router = express.Router();
 const indexJs = path.basename(__filename);

@@ -1,7 +1,7 @@
-import { SHA256 } from "crypto-js";
-import { TxIn } from "./txin";
-import { TxOut } from "./txout";
-import { UnspentTxOut } from "./unspentTxOut";
+import SHA256 from 'crypto-js/sha256.js';
+import { TxIn } from "./txin.js";
+import { TxOut } from "./txout.js";
+import { UnspentTxOut } from "./unspentTxOut.js";
 
 export class Transaction {
     public hash: string;

@@ -1,16 +1,16 @@
 //TODO: API 서버 Console로 변경 예정
 import express from 'express';
-import routes from './routes';
+import routes from './routes/index.js';
 import path from 'path';
 import cors from 'cors';
 
 const server = async(config: any, sdk: any, db: any) => {
     const app = express();
 
-    app.use('/', express.static(path.join(__dirname, '../../../console/frontend/build')));
+    //app.use('/', express.static(path.join(__dirname, '../../../console/frontend/build')));
 
     let corsOptions = {
-        origin: ['http://console.platechain.shop'],
+        origin: ['http://console.platechain.shop', 'http://localhost:3000'],
         credentials: true
     }
     

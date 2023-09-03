@@ -1,17 +1,18 @@
 // import { generateNextBlock, getGenesisBlock, isValidBlock } from "./blockChain";
-import loggerSystem from "./config/logger";
-import initKafka from "./kafka/initKafka";
+import loggerSystem from "./config/logger.js";
+import initKafka from "./kafka/initKafka.js";
 import { Consumer, Producer } from "kafkajs";
-import { db } from "./database/db";
-import server from '../console/server'
-import channel from '../console/channel'
-import { getLength } from './blockchain/blockChain';
-import { Block } from "./blockchain/block";
-import { DIFFICULTY_ADJUSTMENT_INTERVAL } from "./blockchain/genesis";
-import { TxIn } from "./transaction/txin";
-import { TxOut } from "./transaction/txout";
-import { Transaction } from "./transaction/transaction";
-import { UnspentTxOut } from "./transaction/unspentTxOut";
+import { db } from "./database/db.js";
+import server from '../console/server/index.js'
+import channel from '../console/channel/index.js'
+import { getLength } from './blockchain/blockChain.js';
+import { Block } from "./blockchain/block.js";
+import { DIFFICULTY_ADJUSTMENT_INTERVAL } from "./blockchain/genesis.js";
+import { TxIn } from "./transaction/txin.js";
+import { TxOut } from "./transaction/txout.js";
+import { Transaction } from "./transaction/transaction.js";
+import { UnspentTxOut } from "./transaction/unspentTxOut.js";
+import initIPFS from "./ipfs/initIPFS.js";
 
 export default class {
     unspentTxOuts: IUnspentTxOut[];
@@ -35,12 +36,13 @@ export default class {
         try{
             const {role, id, webconsole} = this.configs;
             if(role === 'peer'){
-              const {consumer, producer} = await initKafka(this);
-              this.db = await db(this.configs.db, this.logger);
-              this.server = await server(this.configs, this, this.db);
-              this.consumer = consumer;
-              this.producer = producer;
-              await this.initBlockchain();
+              await initIPFS(this);
+              //const {consumer, producer} = await initKafka(this);
+              //this.db = await db(this.configs.db, this.logger);
+              //this.server = await server(this.configs, this, this.db);
+              //this.consumer = consumer;
+              //this.producer = producer;
+              //await this.initBlockchain();
             }
             else if(role === 'channel'){
               this.server = await channel(this.configs);
@@ -109,17 +111,17 @@ export default class {
       }
 
     async onMessage(topic:any, data: string) {
-        const { topics } = this.configs.kafka;
+        //const { topics } = this.configs.kafka;
         const block = this.deserialize(data);
-        switch(topic) {
-          case topics.pending:
-            if (this.hasRole('peer')) {
-              return await this.addBlockToLedger(block);
-            }
-            return false;
-          default:
-            throw Error('Received message of an invalid topic');
-        }
+        // switch(topic) {
+        //   case topics.pending:
+        //     if (this.hasRole('peer')) {
+        //       return await this.addBlockToLedger(block);
+        //     }
+        //     return false;
+        //   default:
+        //     throw Error('Received message of an invalid topic');
+        // }
     }
 
     async sendNewBlock(data: ITransaction[]): Promise<Failable<Block, string>> {
@@ -138,8 +140,8 @@ export default class {
           this.logger.info(`Building a block for the transaction ${newblock.height} sended.`);
           this.logger.debug('Built new block', newblock);
           // Publish block
-          const topic = this.configs.kafka.topics.pending;
-          await this.__produce(topic, newblock);
+          //const topic = this.configs.kafka.topics.pending;
+          //await this.__produce(topic, newblock);
           // Return the new block
           return {isError: false, value: newblock};
         } catch(err) {
@@ -153,12 +155,12 @@ export default class {
         try {
             const serialized = this.serialize(block);
 
-            return this.producer.send({
-                topic: topic,
-                messages: [
-                  { value: serialized },
-                ],
-            })
+            // return this.producer.send({
+            //     topic: topic,
+            //     messages: [
+            //       { value: serialized },
+            //     ],
+            // })
         } catch(err) {
             this.logger.error(err);
         }

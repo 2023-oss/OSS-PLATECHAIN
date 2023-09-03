@@ -1,6 +1,6 @@
 import { Ottoman, start, close, Query } from "ottoman";
-import { Block } from "../blockchain/block"
-import { BlockModel } from "./BlockModel";
+import { Block } from "../blockchain/block.js"
+import { BlockModel } from "./BlockModel.js";
 
 export default class {
     ottoman: Ottoman;

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import qs from "qs";
-import {Wallet} from '../../../wallet/wallet';
-import {Wallet as W} from '../../../src/wallet';
+import {Wallet} from '../../../wallet/wallet.js';
+import {Wallet as W} from '../../../src/wallet.js';
 import request from 'request';
 
 const router: Router = Router();

@@ -1,5 +1,5 @@
-import config from "./config/conifg";
-import ky2 from "./ky2";
+import config from "./config/conifg.js";
+import ky2 from "./ky2.js";
 
 const main = async () => {
     let logger;
