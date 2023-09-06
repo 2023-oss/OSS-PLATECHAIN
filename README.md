@@ -10,6 +10,8 @@
 
 `Plate` 웹 콘텐츠 보상 시스템과 DID 저장 검증에 특화된 타입스크립트를 기반 퍼블릭 블록체인입니다. 분산형 P2P 표준 `IPFS` 를 활용하여 빠른 데이터 처리와 네트워크 대역폭을 절감해줍니다 모든 데이터는 암호화 되어 NoSQL Database 인`Couchbase`에 저장되여 네트워크에 참여하는 모든 사용자는  자체적으로 제공하는 `Plate Explorer`에서 누구나 블록데이터를 조회할 수 있습니다.
 
+[블록체인 탐색기 데모](http://block.platechain.shop)
+
 #### 피어 노드
 
 다른 피어와 원장을 공유하며 블록체인을 일치시키는 역할을 진행합니다.
@@ -20,12 +22,12 @@
 
 | service           | version  |
 | ----------------- | -------- |
-| **NodeJS**        | v14      |
-| **Kafka**         | 3.2.x    |
-| Couchbase ottoman | v2       |
+| **NodeJS**        | v16      |
+| **helia**      | 3.2.x    |
+| Couchbase  | v2       |
 | Docker            | 20.10.14 |
 
-프로젝트 실행방법은 `npm` 과 `docker` 두 가지 방식이 있습니다.
+노드 실행방법은 `npm` 과 `docker` 두 가지 방식이 있습니다.
 
 ### 노드 실행 방법
 
@@ -34,94 +36,43 @@
 ```
 $ npm install platechain
 ```
-
 ```
 $ npm start
 ```
 
+### 도커 실행 방법
+
+```
+$ docker pull platechain
+```
+```
+$ docker
+```
+
 ## Plate Chain 동작 원리
 
-1. 피어를 생성하면 자동으로 컨테이너가 생성됩니다.
-2. 생성된 컨테이너를 Nginx Unit 이 자동으로 리버스 프록시를 통해서 platechain 도메인과 연결해서 반환합니다. ex) eunsol.platechain.shop
-3. 해당 도메인에 접속하면 블록체인 탐색기로 데이터 확인이 가능합니다.
-4. 이후에 해당 피어에 데이터가 추가되면 블록체인이 검증 후 카프카를 통해 다른 살아있는 노드로 브로드케스팅하게됩니다.
+1. 기본적으로 4개의 Block Node 가 Docker-Compose 로 활성화되어있습니다.
+2.  각각의 노드는 블록체인 탐색기를 제공하여 실시간 데이터 확인이 가능합니다.
+3. 노드에 Transaction 이 추가요청이 들어오면 해당 노드의 Trasaction Pool 에 저장하고 IPFS Protocol 로 다른 노드와 공유합니다
+4. Mine 작업이 수행되면 Transaction 을 모아서 Blockchain 에 업로드 후 다른 IPSF 의 Gassip Protocol 을 통해서 모든 노드에게 전파시킵니다. 
+5. Mine 작업을 수행한 유저에게는 해당 퍼블릭키에 보상을 지급합니다.
 
-## REST API ( Channel )
+## DID 
 
-채널은 일반 피어 노드와 달리 데이터베이스를 가지지 않고 피어노드들을 관리하는 역할을 수행합니다. 
+## REST API ( Node )
 
-### Create Peer
-
-블록체인 피어 노드를 생성합니다. 
-**Request**
-`POST` `/v1/peer/`
-
-```json
-{
-  "id": "userID",
-  "organization": "plate",
-  "password": ""
-}
-```
-
-**Response** 
-`200`
-
-```json
-{
-  "url": "http://peer1.bplate.store" // 생성된 노드의 주소
-}
-```
-
-### Start Peer
-
-피어노드를 시작합니다.  
-**Request**
-`POST` `/v1/peer/start`
-
-```json
-{
-  "id": "peer1"
-  "password": "",
-}
-```
-
-**Response** 
-`200`
-
-```json
-{
-  "url": "http://peer1.bplate.store" // 시작된 노드의 주소
-}
-```
-
-### Delete Peer
-
-노드를 삭제합니다.
-**Request**
-`DELETE` `/v1/peer/:id`
-**Response** 
-`200`
-
-```json
-{
-  "meesage" : "clearly delete node!!"
-}
-```
-
-## REST API ( Peer )
-
-피어노드는 Docker 를 통해서 실행되며 카프카와 연결되어 블록을 다른 노드들과 주고받습니다. 데이터베이스는 Couchbase 에 저장됩니다.
+피어노드는 실행시  블록을 다른 노드들과 주고받습니다. 데이터베이스는 Couchbase 에 저장됩니다.
+다른 블럭의 정보는 `libp2p` 의 `bootstrap` 에서 받아온 뒤 연결합니다.
 
 ### Get Blocks
 
-블록을 조회할 때 사용하는 API 입니다.
+해당 노드에 저장되어있는 전체 블록을 조회할 때 사용하는 API 입니다.
 
 **Request**
 `GET` `/v1/block?user=USERID`
 
 ```shell
-curl -i -H 'Accept: application/json' http://localhost:7000/v1/block?user=USERID
+curl -i -H 'Accept: application/json' http://block.platechain.shop/v1/block/
 ```
 
 **Response**
@@ -164,10 +115,10 @@ curl -i -H 'Accept: application/json' http://localhost:7000/v1/block?user=USERID
   ]
 ```
 
-### Add Block
+### Add Transaction
 
 **Request**
-`POST` `/v1/block/`
+`POST` `/v1/Trasnation/`
 
 ```json
 {
