@@ -16,7 +16,7 @@
 </p>
 <br/>
 
-`Plate` 웹 콘텐츠 보상 시스템과 DID 저장 검증에 특화된 타입스크립트를 기반 퍼블릭 블록체인입니다. 분산형 P2P 표준 `IPFS` 를 활용하여 빠른 데이터 처리와 네트워크 대역폭을 절감해줍니다 모든 데이터는 암호화 되어 NoSQL Database 인`Couchbase`에 저장되여 네트워크에 참여하는 모든 사용자는  자체적으로 제공하는 `Plate Explorer`에서 누구나 블록데이터를 조회할 수 있습니다.
+It is a public blockchain based on 'Plate' web content compensation system and type scripts specialized for DID storage verification. Using Distributed P2P standard 'IPFS' to reduce fast data processing and network bandwidth. All data is encrypted and stored in 'Couchbase', the NoSQL database, so anyone who participates in the network can query block data from their own 'Plate Explorer'.
 
 [블록체인 탐색기 데모](http://block.platechain.shop)
 
