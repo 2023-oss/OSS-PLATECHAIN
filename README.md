@@ -5,11 +5,6 @@
 </p>
 <h1  align="center">Plate Chain</h1>
 <h4  align="center"></h4>
-<br/>
-<img src="https://img.shields.io/github/contributors/2023-oss/OSS-PLATECHAIN
-">
-<img src="https://img.shields.io/github/languages/count/2023-oss/OSS-PLATECHAIN
-">
 
 <p align="center">
 <img alt="GitHub license" src="https://img.shields.io/github/issues/2023-oss/OSS-PLATECHAIN">
