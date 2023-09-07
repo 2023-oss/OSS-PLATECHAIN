@@ -7,6 +7,8 @@
 <h4  align="center"></h4>
 
 <p align="center">
+<img src="https://img.shields.io/github/contributors/2023-oss/OSS-PLATECHAIN">
+<img src="https://img.shields.io/github/languages/count/2023-oss/OSS-PLATECHAIN">
 <img alt="GitHub license" src="https://img.shields.io/github/issues/2023-oss/OSS-PLATECHAIN">
 <img alt="GitHub license" src="https://img.shields.io/github/issues-closed/2023-oss/OSS-PLATECHAIN">
 <img src="https://img.shields.io/github/license/2023-oss/OSS-PLATECHAIN">
