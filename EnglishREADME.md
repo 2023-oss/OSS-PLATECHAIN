@@ -18,15 +18,15 @@
 
 It is a public blockchain based on 'Plate' web content compensation system and type scripts specialized for DID storage verification. Using Distributed P2P standard 'IPFS' to reduce fast data processing and network bandwidth. All data is encrypted and stored in 'Couchbase', the NoSQL database, so anyone who participates in the network can query block data from their own 'Plate Explorer'.
 
-[블록체인 탐색기 데모](http://block.platechain.shop)
+[Blockchain Explorer Demo](http://block.platechain.shop)
 
-#### 피어 노드
+#### PEER NODE
 
-다른 피어와 원장을 공유하며 블록체인을 일치시키는 역할을 진행합니다.
+Share the ledger with other peers and play a role in matching blockchain.
 
-## 블록체인 설치 및 실행 방법
+## How to install and run blockchain
 
-아래와 같은 환경을 권장합니다.
+The following environments are recommended
 
 | service           | version  |
 | ----------------- | -------- |
@@ -35,11 +35,11 @@ It is a public blockchain based on 'Plate' web content compensation system and t
 | Couchbase  | v2       |
 | Docker            | 20.10.14 |
 
-노드 실행방법은 `npm` 과 `docker` 두 가지 방식이 있습니다.
+There are two ways to run a node: 'npm' and 'docker'.
 
-### 노드 실행 방법
+### How to run NODE
 
-[NPM 저장소](https://www.npmjs.com/) 에서 `plate Chain`을 다운 받습니다.
+Download 'plateChain' from the [NPM Storage](https://www.npmjs.com/) 
 
 ```
 $ npm install platechain
@@ -48,7 +48,7 @@ $ npm install platechain
 $ npm start
 ```
 
-### 도커 실행 방법
+### How to run DOCKER
 
 ```
 $ docker pull platechain
@@ -57,24 +57,24 @@ $ docker pull platechain
 $ docker
 ```
 
-## Plate Chain 동작 원리
+## Plate Chain Principle of operation
 
-1. 기본적으로 4개의 Block Node 가 Docker-Compose 로 활성화되어있습니다.
-2.  각각의 노드는 블록체인 탐색기를 제공하여 실시간 데이터 확인이 가능합니다.
-3. 노드에 Transaction 이 추가요청이 들어오면 해당 노드의 Trasaction Pool 에 저장하고 IPFS Protocol 로 다른 노드와 공유합니다
-4. Mine 작업이 수행되면 Transaction 을 모아서 Blockchain 에 업로드 후 다른 IPSF 의 Gassip Protocol 을 통해서 모든 노드에게 전파시킵니다. 
-5. Mine 작업을 수행한 유저에게는 해당 퍼블릭키에 보상을 지급합니다.
+1. By default, four Block Nodes are enabled as Docker-Compose.
+2. Each node provides a blockchain explorer to enable real-time data verification.
+3. When a request for adding Transaction to a node is received, it is stored in the Trasaction Pool of that node and shared with other nodes with IPFS Protocol
+4. When the Mine operation is performed, the Transaction is collected, uploaded to Blockchain, and propagated to all nodes through the other IPSF's Gassip Protocol.
+5. The user who performs the Mine operation will be rewarded with the corresponding public key.
 
 ## DID 
 
 ## REST API ( Node )
 
-피어노드는 실행시  블록을 다른 노드들과 주고받습니다. 데이터베이스는 Couchbase 에 저장됩니다.
-다른 블럭의 정보는 `libp2p` 의 `bootstrap` 에서 받아온 뒤 연결합니다.
+Peer nodes exchange blocks with other nodes at runtime. The database is stored in the Couchbase.
+Information on other blocks is obtained from 'bootstrap' in 'libp2p' and connected.
 
 ### Get Blocks
 
-해당 노드에 저장되어있는 전체 블록을 조회할 때 사용하는 API 입니다.
+API used to query the entire block stored on that node.
 
 **Request**
 `GET` `/v1/block?user=USERID`
@@ -161,14 +161,14 @@ curl -i -H 'Accept: application/json' http://block.platechain.shop/v1/block/
 
 ## Blockchain Explorer
 
-블록체인 데이터를 손쉽게 조회하고 상태를 확인할 수 있는 탐색기를 제공합니다.
+Provides an explorer to easily look up blockchain data and check its status.
 
-탐색기는 `React`를 사용해서 개발했습니다.
+The explorer was developed using 'React'.
 
-#### 로그인 페이지
+#### Login Page
 
 ![](../images/bc-explorer2.png)
 
-#### 메인페이지
+#### Main Page
 
 ![](../images/bc-explorer1.png)
