@@ -16,7 +16,7 @@
 </p>
 <br/>
 
-`Plate` 웹 콘텐츠 보상 시스템과 DID 저장 검증에 특화된 타입스크립트를 기반 퍼블릭 블록체인입니다. 분산형 P2P 표준 `IPFS` 를 활용하여 빠른 데이터 처리와 네트워크 대역폭을 절감해줍니다 모든 데이터는 암호화 되어 NoSQL Database 인`Couchbase`에 저장되여 네트워크에 참여하는 모든 사용자는  자체적으로 제공하는 `Plate Explorer`에서 누구나 블록데이터를 조회할 수 있습니다.
+`Plate` 웹 콘텐츠 보상 시스템과 DID 저장 검증에 특화된 타입스크립트를 기반 퍼블릭 블록체인입니다. 분산형 P2P 표준 `IPFS` 를 활용하여 빠른 데이터 처리와 네트워크 대역폭을 절감해줍니다 모든 데이터는 암호화 되어 NoSQL Database 인`Couchbase`에 저장되어 네트워크에 참여하는 모든 사용자는  자체적으로 제공하는 `Plate Explorer`에서 누구나 블록데이터를 조회할 수 있습니다.
 
 [블록체인 탐색기 데모](http://block.platechain.shop)
 
@@ -60,7 +60,7 @@ $ docker
 ## Plate Chain 동작 원리
 
 1. 기본적으로 4개의 Block Node 가 Docker-Compose 로 활성화되어있습니다.
-2.  각각의 노드는 블록체인 탐색기를 제공하여 실시간 데이터 확인이 가능합니다.
+2. 각각의 노드는 블록체인 탐색기를 제공하여 실시간 데이터 확인이 가능합니다.
 3. 노드에 Transaction 이 추가요청이 들어오면 해당 노드의 Trasaction Pool 에 저장하고 IPFS Protocol 로 다른 노드와 공유합니다
 4. Mine 작업이 수행되면 Transaction 을 모아서 Blockchain 에 업로드 후 다른 IPSF 의 Gassip Protocol 을 통해서 모든 노드에게 전파시킵니다. 
 5. Mine 작업을 수행한 유저에게는 해당 퍼블릭키에 보상을 지급합니다.
@@ -69,12 +69,12 @@ $ docker
 
 ## REST API ( Node )
 
-피어노드는 실행시  블록을 다른 노드들과 주고받습니다. 데이터베이스는 Couchbase 에 저장됩니다.
+피어노드는 실행 시 블록을 다른 노드들과 주고받습니다. 데이터베이스는 Couchbase 에 저장됩니다.
 다른 블럭의 정보는 `libp2p` 의 `bootstrap` 에서 받아온 뒤 연결합니다.
 
 ### Get Blocks
 
-해당 노드에 저장되어있는 전체 블록을 조회할 때 사용하는 API 입니다.
+해당 노드에 저장되어 있는 전체 블록을 조회할 때 사용하는 API 입니다.
 
 **Request**
 `GET` `/v1/block?user=USERID`
