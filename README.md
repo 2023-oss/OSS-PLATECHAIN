@@ -5,7 +5,14 @@
 </p>
 <h1  align="center">Plate Chain</h1>
 <h4  align="center"></h4>
-
+<br/>
+<img src="https://img.shields.io/github/contributors/2023-oss/OSS-PLATECHAIN
+">
+<img src="https://img.shields.io/github/languages/count/2023-oss/OSS-PLATECHAIN
+">
+<img alt="GitHub license" src="https://img.shields.io/github/issues/2023-oss/OSS-PLATECHAIN">
+<img alt="GitHub license" src="https://img.shields.io/github/issues-closed/2023-oss/OSS-PLATECHAIN">
+<img src="https://img.shields.io/github/license/2023-oss/OSS-PLATECHAIN">
 <br/>
 
 `Plate` 웹 콘텐츠 보상 시스템과 DID 저장 검증에 특화된 타입스크립트를 기반 퍼블릭 블록체인입니다. 분산형 P2P 표준 `IPFS` 를 활용하여 빠른 데이터 처리와 네트워크 대역폭을 절감해줍니다 모든 데이터는 암호화 되어 NoSQL Database 인`Couchbase`에 저장되여 네트워크에 참여하는 모든 사용자는  자체적으로 제공하는 `Plate Explorer`에서 누구나 블록데이터를 조회할 수 있습니다.
